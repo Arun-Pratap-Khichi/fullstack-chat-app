@@ -7,7 +7,7 @@ const server = http.createServer(app);
 dotenv.config();
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173"],
+    origin: [process.env.Frontend_Url],
   },
 });
 
