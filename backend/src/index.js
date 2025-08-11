@@ -27,7 +27,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Frontend URL
+    origin: process.env.Frontend_Url, // Frontend URL
     credentials: true,
   })
 );
@@ -44,7 +44,9 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }
-
+app.get("/",(req,res)=>{
+  res.send("API is really working")
+})
 // Connect to MongoDB and start the server
 connectDB().then(() => {
   server.listen(PORT, () => {
